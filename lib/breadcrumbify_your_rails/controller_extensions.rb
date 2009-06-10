@@ -16,7 +16,7 @@ module ControllerExtensions
     end  
 
     def add_breadcrumb(name, path = '')  
-      add_breadcrumb_without_translation (name), path  
+      add_breadcrumb_without_translation (name, path)  
     end
     
     def breadcrumbs
