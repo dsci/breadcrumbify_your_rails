@@ -1,11 +1,40 @@
 h2. BreadcrumbifyYourRails
 
-Introduction goes here.
+In application_controller.rb:
 
+<pre>
+  <code>
+    helper_method :breadcrumbs
+  </code>
+</pre>
 
-h2. Example
+In your controller:
 
-Example goes here.
+ <pre>
+   <code>
+     add_breadcrumb 'BlogEntries', 'blog_entries_path'
+  
+     def show
+       @blog_entry = BlogEntry.find(params[:id])
+       add_breadcrumb @blog_entry.title, ''
+     end
+  </code>
+ </pre>
+ 
+ or 
+ 
+ <pre>
+    <code>
+      add_breadcrumb I18n.t('admin.blog.entry.new'), '', :only => [:new, :create]  
+   </code>
+ </pre>
+ 
+In your view:
 
+<pre>
+  <code>
+    <%=render_breadcrumbs("You are here:")%>
+  </code>
+</pre>
 
 Copyright (c) 2009 Daniel Schmidt, released under the MIT license
